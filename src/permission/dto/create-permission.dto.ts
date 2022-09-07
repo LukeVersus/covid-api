@@ -1,0 +1,15 @@
+import { IsBoolean, IsNotEmpty, IsOptional, IsString, MinLength } from "class-validator";
+
+export class CreatePermissionDto {
+    @IsNotEmpty({ message: "A 'descrição' deve ser informada." })
+    @IsString({ message: "A 'descricão' deve ser um texto." })
+    @MinLength(10, { message: "A 'descrição' deve ser um texto explicativo." })
+    descricao: string;
+
+    @IsNotEmpty({ message: "A 'permissão' deve ser informada." })
+    nome: string;
+
+    @IsOptional()
+    @IsBoolean({ message: "O 'ativo' deve ser verdadeiro ou falso." })
+    ativo: boolean;
+}
